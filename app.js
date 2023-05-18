@@ -14,6 +14,6 @@ app.use(express.json());
 app.use("/api/books", bookRoutes);
 app.use("/api/authors", authorRoutes);
 
-app.listen(PORT, function () {
+app.listen(PORT, function() {
   console.log(`Server listening on port ${PORT}`);
 });
