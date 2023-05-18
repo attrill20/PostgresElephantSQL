@@ -10,12 +10,20 @@ export async function getAuthors() {
 
 export async function searchAuthorsByName(searchTerm) {
   // Query the database and return all authors that have a name matching the searchTerm
-  return [];
+  const value = [searchTerm]
+  const query = `SELECT * FROM authors WHERE last_name = $1 ;`;
+  const result = await pool.query(query, value)
+  console.table(result.rows)
+  return result.rows;
 }
 
 export async function getAuthorById(id) {
   // Query the database and return the book with a matching id
-  return {};
+  const value = [id]
+  const query = `SELECT * FROM authors WHERE id = $1 ;`;
+  const result = await pool.query(query, value)
+  console.table(result.rows[0])
+  return result.rows[0];
 }
 
 export async function createAuthor(author) {
